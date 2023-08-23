@@ -5,6 +5,16 @@
 
 一个支持更换 Live2D 模型的 Typecho 插件。
 ---- */
+let isAIhelper = false;
+const dialogElement = document.getElementById("dialog");
+const userInputElement = document.getElementById("user-input");
+const submitButton = document.getElementById("submit-btn");
+let userInputArray = [];
+
+function removeRow(input) {
+    $("#AIhelper").hide();
+    isAIhelper = false;
+};
 
 var Paul_Pio = function (prop) {
     var that = this;
@@ -14,7 +24,7 @@ var Paul_Pio = function (prop) {
         menu: document.querySelector(".pio-container .pio-action"),
         canvas: document.getElementById("pio"),
         body: document.querySelector(".pio-container"),
-        root: document.location.protocol +'//' + document.location.hostname +'/'
+        root: document.location.protocol + '//' + document.location.hostname + '/'
     };
 
     /* - 方法 */
@@ -28,7 +38,7 @@ var Paul_Pio = function (prop) {
         // 创建内容
         create: function (tag, prop) {
             var e = document.createElement(tag);
-            if(prop.class) e.className = prop.class;
+            if (prop.class) e.className = prop.class;
             return e;
         },
         // 随机内容
@@ -37,18 +47,19 @@ var Paul_Pio = function (prop) {
         },
         // 创建对话框方法
         render: function (text) {
-            if(text.constructor === Array){
+            if (text.constructor === Array) {
                 dialog.innerText = modules.rand(text);
             }
-            else if(text.constructor === String){
+            else if (text.constructor === String) {
                 dialog.innerText = text;
             }
             dialog.classList.add("active");
             clearTimeout(this.t);
             this.t = setTimeout(function () {
                 dialog.classList.remove("active");
-            }, 3000);
+            }, 5000);
         },
+
         // 移除方法
         destroy: function () {
             that.initHidden();
@@ -63,32 +74,93 @@ var Paul_Pio = function (prop) {
         }
     };
     this.destroy = modules.destroy;
-
+    this.render = modules.render;
     var elements = {
-        home: modules.create("span", {class: "pio-home"}),
-        skin: modules.create("span", {class: "pio-skin"}),
-        info: modules.create("span", {class: "pio-info"}),
-        sentence: modules.create("span", {class: "pio-sentence"}),
+        home: modules.create("span", { class: "pio-home" }),
+        skin: modules.create("span", { class: "pio-skin" }),
+        info: modules.create("span", { class: "pio-info" }),
+        sentence: modules.create("span", { class: "pio-sentence" }),
         //close: modules.create("span", {class: "pio-close"}),
 
-        show: modules.create("div", {class: "pio-show"})
+        show: modules.create("div", { class: "pio-show" })
     };
 
-    var dialog = modules.create("div", {class: "pio-dialog"});
+    var dialog = modules.create("div", { class: "pio-dialog" });
     current.body.appendChild(dialog);
     current.body.appendChild(elements.show);
 
+
+    //openai dialogy
+    function appendUserInput(input) {
+        const chatFrame = document.createElement("div");
+        chatFrame.classList.add("chat-frame");
+
+        const userInputItem = document.createElement("div");
+        userInputItem.innerText = input;
+        userInputItem.classList.add("user-input");
+        chatFrame.appendChild(userInputItem);
+
+        dialogElement.appendChild(chatFrame);
+    }
+
+    function appendResponse(response) {
+        modules.render(response);
+
+        const chatFrame = document.createElement("div");
+        chatFrame.classList.add("chat-frame");
+
+        const responseItem = document.createElement("div");
+        responseItem.innerText = response;
+        responseItem.classList.add("ai-response");
+        chatFrame.appendChild(responseItem);
+
+        dialogElement.appendChild(chatFrame);
+    }
+
+
+    function handleUserInput() {
+        const userInput = userInputElement.value;
+        userInputArray.push(userInput);
+        appendUserInput(userInput);
+        userInputElement.value = "";
+
+        fetch("https://chatgpttesting.lol/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                input: userInput,
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                appendResponse(data.output);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    };
+
+    submitButton.addEventListener("click", handleUserInput);
+    userInputElement.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            handleUserInput();
+        }
+    });
+
     /* - 提示操作 */
-        var action = {
+    var action = {
+
         // 欢迎
-         welcome: function () {
-            if(document.referrer !== "" && document.referrer.indexOf(current.root) === -1){
+        welcome: function () {
+            if (document.referrer !== "" && document.referrer.indexOf(current.root) === -1) {
                 var referrer = document.createElement('a');
                 referrer.href = document.referrer;
                 prop.content.referer ? modules.render(prop.content.referer.replace(/%t/, "“" + referrer.hostname + "”")) : modules.render("Welcome friend “" + referrer.hostname + "”！〃•ω‹〃");
             }
 
-            else if(prop.tips){
+            else if (prop.tips) {
                 var text, hour = new Date().getHours();
 
                 if (hour > 22 || hour <= 5) {
@@ -115,94 +187,104 @@ var Paul_Pio = function (prop) {
                 else if (hour > 21 && hour <= 23) {
                     text = 'It is already so late. Go to bed early. Good night~ ૮꒰ ˶• ༝ •˶꒱ა';
                 }
-                else{
+                else {
                     text = "XD";
                 }
                 modules.render(text);
             }
-            else{
+            else {
                 modules.render(prop.content.welcome || "Welcome to my Blog! ૮(˶ᵔ ᵕ ᵔ˶)ა");
             }
         },
         // 触摸
         touch: function () {
             current.canvas.onclick = function () {
-                modules.render(prop.content.touch || ["What are you doing? ૮₍ > ⤙ > ₎ა","Why do you touch me? (՞• •՞)","HENTAI! ૮ . ̫ . ა","STOP! ჴ˘ര‸രჴ"]);
+                modules.render(prop.content.touch || ["What are you doing? ૮₍ > ⤙ > ₎ა", "Why do you touch me? (՞• •՞)", "HENTAI! ૮ . ̫ . ა", "STOP! ჴ˘ര‸രჴ"]);
             };
         },
         // 右侧按钮
-         buttons: function () {
-             // 返回首页
-             elements.home.onclick = function () {
-                 location.href = current.root;
-             };
-             elements.home.onmouseover = function () {
-                 modules.render(prop.content.home || "Click here return to the old blog!");
-             };
-             current.menu.appendChild(elements.home);
+        buttons: function () {
+            // 返回首页
+            elements.home.onclick = function () {
+                location.href = current.root;
+            };
+            elements.home.onmouseover = function () {
+                modules.render(prop.content.home || "Click here return to the old blog!");
+            };
+            current.menu.appendChild(elements.home);
 
-             // 更换模型
-             elements.skin.onclick = function () {
-                 loadlive2d("pio", prop.model[modules.idol()]);
-                 prop.content.skin && prop.content.skin[1] ? modules.render(prop.content.skin[1]) : modules.render("The new dress is so beautiful!");
-             };
-             elements.skin.onmouseover = function () {
-                 prop.content.skin && prop.content.skin[0] ? modules.render(prop.content.skin[0]) : modules.render("Would you like to see my new dress?");
-             };
-             if(prop.model.length > 1) current.menu.appendChild(elements.skin);
+            // 更换模型
+            elements.skin.onclick = function () {
+                loadlive2d("pio", prop.model[modules.idol()]);
+                prop.content.skin && prop.content.skin[1] ? modules.render(prop.content.skin[1]) : modules.render("The new dress is so beautiful!");
+            };
+            elements.skin.onmouseover = function () {
+                prop.content.skin && prop.content.skin[0] ? modules.render(prop.content.skin[0]) : modules.render("Would you like to see my new dress?");
+            };
+            if (prop.model.length > 1) current.menu.appendChild(elements.skin);
 
-             // 关于我
-             elements.info.onclick = function () {
-                 window.open("https://tianbinliu.github.io/Fastpage/about.html");
-             };
-             elements.info.onmouseover = function () {
-                 modules.render("Wants to know more information about me?");
-             };
-             current.menu.appendChild(elements.info);
+            // ChatGPT对话框
+            elements.info.onclick = function () {
+                // 打开对话框
+                if (!isAIhelper) {
+                    $("#AIhelper").show();
+                    isAIhelper = true;
+                }
+                else if (isAIhelper) {
+                    $("#AIhelper").hide();
+                    isAIhelper = false;
+                }
 
-             // 一言
-             elements.sentence.onclick = function () {
-                 modules.render(fetch('https://v1.hitokoto.cn')
-                                     .then(response => response.json())
-                                     .then(data => {
-                                             const hitokoto = document.querySelector('.pio-dialog')
-                                             hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-                                             hitokoto.innerText = data.hitokoto })
-                                     .catch(console.error) )
-                  };
-                 elements.sentence.onmouseover = function () {
-                     modules.render("I heard a lot of life lessons from a Chinese friend. | ᐕ)⁾⁾");
-                 };
-                 current.menu.appendChild(elements.sentence);
+            };
+            elements.info.onmouseover = function () {
+                modules.render("Am I talking too fast? Click here to see our chatting records");
+            };
+            current.menu.appendChild(elements.info);
+
+            // 一言
+            elements.sentence.onclick = function () {
+                modules.render(fetch('https://v1.hitokoto.cn')
+                    .then(response => response.json())
+                    .then(data => {
+                        const hitokoto = document.querySelector('.pio-dialog')
+                        hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+                        hitokoto.innerText = data.hitokoto
+                    })
+                    .catch(console.error))
+            };
+            elements.sentence.onmouseover = function () {
+                modules.render("I heard a lot of life lessons from a Chinese friend. | ᐕ)⁾⁾");
+            };
+            current.menu.appendChild(elements.sentence);
 
 
-             // 关闭看板娘
-             elements.close.onclick = function () {
-                 modules.destroy();
-             };
-             elements.close.onmouseover = function () {
-                 modules.render(prop.content.close || "QWQ See you next time~");
-             };
-             current.menu.appendChild(elements.close);
-         },
+            // 关闭看板娘
+            elements.close.onclick = function () {
+                modules.destroy();
+            };
+            elements.close.onmouseover = function () {
+                modules.render(prop.content.close || "QWQ See you next time~");
+            };
+            current.menu.appendChild(elements.close);
+        },
         custom: function () {
             prop.content.custom.forEach(function (t) {
-                if(!t.type) t.type = "default";
+                if (!t.type) t.type = "default";
                 var e = document.querySelectorAll(t.selector);
 
-                if(e.length){
-                    for(var j = 0; j < e.length; j++){
-                        if(t.type === "read"){
+                if (e.length) {
+                    for (var j = 0; j < e.length; j++) {
+                        if (t.type === "read") {
                             e[j].onmouseover = function () {
                                 modules.render("Wants to read %t ?".replace(/%t/, "“" + this.innerText + "”"));
                             }
                         }
-                        else if(t.type === "link"){
+                        else if (t.type === "link") {
                             e[j].onmouseover = function () {
                                 modules.render("Wants to know about %t ?".replace(/%t/, "“" + this.innerText + "”"));
                             }
                         }
-                        else if(t.text){
+                        else if (t.text) {
                             e[j].onmouseover = function () {
                                 modules.render(t.text);
                             }
@@ -235,7 +317,7 @@ var Paul_Pio = function (prop) {
                     body.classList.add("active");
                     body.classList.remove("right");
                     body.style.left = (moveEvent.clientX - location.x) + 'px';
-                    body.style.top  = (moveEvent.clientY - location.y) + 'px';
+                    body.style.top = (moveEvent.clientY - location.y) + 'px';
                     body.style.bottom = "auto";
                 }
 
@@ -250,19 +332,19 @@ var Paul_Pio = function (prop) {
 
     // 运行
     this.init = function (onlyText) {
-        if(!(prop.hidden&& modules.isMobile())){
-            if(!onlyText){
+        if (!(prop.hidden && modules.isMobile())) {
+            if (!onlyText) {
                 action.welcome();
-                loadlive2d("pio", prop.model[Math.floor(Math.random()*(prop.model.length))]);
+                loadlive2d("pio", prop.model[Math.floor(Math.random() * (prop.model.length))]);
             }
 
-            switch (prop.mode){
+            switch (prop.mode) {
                 case "static": begin.static(); break;
-                case "fixed":  begin.fixed(); break;
+                case "fixed": begin.fixed(); break;
                 case "draggable": begin.draggable(); break;
             }
 
-            if(prop.content.custom) action.custom();
+            if (prop.content.custom) action.custom();
         }
     };
 
@@ -279,4 +361,6 @@ var Paul_Pio = function (prop) {
     }
 
     localStorage.getItem("posterGirl") == 0 ? this.initHidden() : this.init();
+
 };
+

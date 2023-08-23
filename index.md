@@ -3,11 +3,6 @@ layout: default
 title: Student Blog
 ---
 
-
-# Welcome to my blog 
-
-## Table of Content
-
 <table>
    <tr>
     <th>Week</th>
