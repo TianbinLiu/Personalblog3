@@ -6,8 +6,7 @@ title: Student Blog
 <table>
    <tr>
     <th>Week</th>
-    <th><a href="https://github.com/TianbinLiu/Fastpage/issues">Review Ticket</a></th>
-
+    <th><a href="https://github.com/TianbinLiu/Personalblog3/issues">Review Ticket</a></th>
    </tr>
    
    <tr>
