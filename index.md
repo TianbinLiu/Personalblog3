@@ -21,4 +21,4 @@ title: Student Blog
    </tr>
   
 
-</div>
+</table>
