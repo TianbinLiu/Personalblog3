@@ -18,6 +18,10 @@ title: Student Blog
     <td>0 & 1</td>
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/1">Tool Set Up and Changes on Git Home Page</a></td>
    </tr>
+   <tr>
+    <td>1</td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/2">Lab Notebook Check Review Ticket</a></td>
+   </tr>
   
 
 </table>
