@@ -1,6 +1,6 @@
 ---
 toc: true
-comments: true
+comments: false
 layout: post
 title: GitHub Pages
 description: Build your first Blog.  This will help us communicate results.

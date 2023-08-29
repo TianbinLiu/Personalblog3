@@ -1,6 +1,6 @@
 ---
 toc: true
-comments: true
+comments: false
 layout: post
 title: Tools Setup
 description: Become one with your tools.  They could be more important than code, code, coding.
