@@ -74,7 +74,7 @@ type: hacks
 </style>
 
 
-<div class="container" style="background: rgba(0,0,0,0.2); ">
+<div class="container" style="background: rgba(0,0,0,0.4); ">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
         <p class="fs-4">Snake score: <span id="score_value">0</span></p>
     </header>
