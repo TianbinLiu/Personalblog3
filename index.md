@@ -29,7 +29,7 @@ title: Student Blog
     <td>None</td>
     <td>
     <a href="https://tianbinliu.github.io/Personalblog3/2023/08/30/Linux-commands_IPYNB_2_.html">Note: Linux Commands</a><br>
-    <a href="https://tianbinliu.github.io/Personalblog3/2023/08/31/Week1-Hacks_IPYNB_2_.html">Week 2 Hacks</a><br>
+    <a href="https://tianbinliu.github.io/Personalblog3/2023/08/31/Week2-Hacks_IPYNB_2_.html">Week 2 Hacks</a><br>
     <a href="https://tianbinliu.github.io/Personalblog3/2023/08/31/Snake_Game.html">Snake Game</a><br>
     <a href="https://tianbinliu.github.io/Personalblog3/Calculator">Calculator</a>
     </td>
