@@ -39,6 +39,7 @@ title: Student Blog
     <td>3</td>
     <td>None</td>
     <td>
+    <a href="https://tianbinliu.github.io/Personalblog3/2023/09/06/Week3-Hacks_IPYNB_2_.html">Week 3 Hacks</a><br>
     </td>
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/3">Pair showcase + Review Ticket</a></td>
    </tr>
