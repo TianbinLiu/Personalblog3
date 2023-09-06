@@ -35,6 +35,12 @@ title: Student Blog
     </td>
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/2">Lab Notebook Check Review Ticket</a></td>
    </tr>
-  
+   <tr>
+    <td>3</td>
+    <td>None</td>
+    <td>
+    </td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/3">Pair showcase + Review Ticket</a></td>
+   </tr>
 
 </table>
