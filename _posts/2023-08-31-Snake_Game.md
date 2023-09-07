@@ -348,7 +348,7 @@ type: hacks
            const image = new Image();
             image.src = "{{ '/images/apple.png' | relative_url }}"; // Replace 'image.png' with the path to your image
             image.onload = function() {
-            ctx.drawImage(image, x * BLOCK, y * BLOCK, 16, 16);
+            ctx.drawImage(image, x * BLOCK, y * BLOCK, 8, 8);
     };
         }
         /* Random food placement */
