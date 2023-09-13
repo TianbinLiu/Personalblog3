@@ -48,8 +48,8 @@ title: Student Blog
     <td>None</td>
     <td>
     <a href="https://tianbinliu.github.io/Personalblog3/2023/09/13/Week4-Hacks_IPYNB_2_.html">Week 3 Hacks</a><br>
-    <a href="https://tianbinliu.github.io/Personalblog3/JSCalculator">JS Calculator</a>
-    <a href="https://tianbinliu.github.io/Personalblog3/2023/09/13/JSReview_IPYNB_2_.html">Calculator</a>
+    <a href="https://tianbinliu.github.io/Personalblog3/JSCalculator">JS Calculator</a><br>
+    <a href="https://tianbinliu.github.io/Personalblog3/2023/09/13/JSReview_IPYNB_2_.html">Javascript Review: Beginner</a>
     </td>
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/4">Pair showcase + Review Ticket</a></td>
    </tr>
