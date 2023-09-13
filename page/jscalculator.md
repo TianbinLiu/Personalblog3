@@ -24,8 +24,7 @@ title: JS Calculator
   }
 </style>
 
-<!-- Add a container for the animation -->
-<div id="animation">
+<div>
   <div class="calculator-container">
       <!--result-->
       <div class="calculator-output" id="output">0</div>
