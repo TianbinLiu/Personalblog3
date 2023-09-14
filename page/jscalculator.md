@@ -19,8 +19,7 @@ title: JS Calculator
 
     grid-column: span 1;
     grid-row: span 1;
-
-    // Creates smooth animation effect
+    
     transition: all 0.5s; 
   }
 
