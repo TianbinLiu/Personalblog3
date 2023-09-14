@@ -105,6 +105,7 @@ title: JS Calculator
       <div class="calculator-number button">8</div>
       <div class="calculator-number button">9</div>
       <div class="calculator-operation button">*</div>
+      <div class="calculator-operation button">/</div>
       <!--row 4-->
       <div class="calculator-clear button">A/C</div>
       <div class="calculator-number button">0</div>
