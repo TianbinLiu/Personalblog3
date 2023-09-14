@@ -5,6 +5,47 @@ title: JS Calculator
 ---
 
 <style>
+  @mixin button {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    background-color: #21807c;
+    border: 3px solid black;
+    font-size: 1.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    grid-column: span 1;
+    grid-row: span 1;
+
+    // Creates smooth animation effect
+    transition: all 0.5s; 
+  }
+
+  /* define class for redifined button */
+  .button {
+    @include button;
+  }
+
+   /* darkens the background color on hover to create a selecting effect */
+  .button:hover {
+    background-color: #373737;
+  }
+
+  /* "row style" is flexible size and aligns pictures in center */
+  .row {
+    align-items: center;
+    display: flex;
+  }
+
+  /* "column style" is one-third of the width with padding */
+  .column {
+    flex: 16.66%;
+    padding: 3px;
+  }
+
   .calculator-output {
     /* calulator output 
       top bar shows the results of the calculator;
