@@ -40,8 +40,6 @@ title: JS Calculator
     flex: 16.66%;
     padding: 3px;
   }
-  
-// STYLING FOR CALCULATOR
   /* class to create the calculator's container; uses CSS grid dsiplay to partition off buttons */
   .calculator-container { 
     width: 90vw; /* this width and height is specified for mobile devices by default */
@@ -92,27 +90,27 @@ title: JS Calculator
 <div>
   <div class="calculator-container">
       <!--result-->
-      <div class="calculator-output" id="output">0</div>
+      <div class="calculator-output button" id="output">0</div>
       <!--row 1-->
-      <div class="calculator-number">1</div>
-      <div class="calculator-number">2</div>
-      <div class="calculator-number">3</div>
-      <div class="calculator-operation">+</div>
+      <div class="calculator-number button">1</div>
+      <div class="calculator-number button">2</div>
+      <div class="calculator-number button">3</div>
+      <div class="calculator-operation button">+</div>
       <!--row 2-->
-      <div class="calculator-number">4</div>
-      <div class="calculator-number">5</div>
-      <div class="calculator-number">6</div>
-      <div class="calculator-operation">-</div>
+      <div class="calculator-number button">4</div>
+      <div class="calculator-number button">5</div>
+      <div class="calculator-number button">6</div>
+      <div class="calculator-operation button">-</div>
       <!--row 3-->
-      <div class="calculator-number">7</div>
-      <div class="calculator-number">8</div>
-      <div class="calculator-number">9</div>
-      <div class="calculator-operation">*</div>
+      <div class="calculator-number button">7</div>
+      <div class="calculator-number button">8</div>
+      <div class="calculator-number button">9</div>
+      <div class="calculator-operation button">*</div>
       <!--row 4-->
-      <div class="calculator-clear">A/C</div>
-      <div class="calculator-number">0</div>
-      <div class="calculator-number">.</div>
-      <div class="calculator-equals">=</div>
+      <div class="calculator-clear button">A/C</div>
+      <div class="calculator-number button">0</div>
+      <div class="calculator-number button">.</div>
+      <div class="calculator-equals button">=</div>
   </div>
 </div>
 
