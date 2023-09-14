@@ -89,7 +89,7 @@ title: JS Calculator
 <div>
   <div class="calculator-container">
       <!--result-->
-      <div class="calculator-output button" id="output">0</div>
+      <div class="calculator-output" id="output">0</div>
       <!--row 1-->
       <div class="calculator-number button">1</div>
       <div class="calculator-number button">2</div>
