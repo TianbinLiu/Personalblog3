@@ -3,26 +3,6 @@ layout: default
 title: Student Blog
 ---
 
-<style>
-  .calculator-output {
-    /* calulator output 
-      top bar shows the results of the calculator;
-      result to take up the entirety of the first row;
-      span defines 4 columns and 1 row
-    */
-    grid-column: span 4;
-    grid-row: span 1;
-  
-    border-radius: 10px;
-    padding: 0.25em;
-    font-size: 20px;
-    border: 5px solid black;
-  
-    display: flex;
-    align-items: center;
-  }
-</style>
-
 <table>
    <tr>
     <th>Week</th>
