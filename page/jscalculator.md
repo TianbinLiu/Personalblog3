@@ -22,6 +22,44 @@ title: JS Calculator
     display: flex;
     align-items: center;
   }
+  .calculator-container { 
+    width: 90vw; /* this width and height is specified for mobile devices by default */
+    height: 80vh;
+    margin: 0 auto;
+  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* fr is a special unit; learn more here: https://css-tricks.com/introduction-fr-css-unit/  */
+    grid-template-rows: 0.5fr repeat(4, 1fr);
+    gap: 10px 10px;
+  }
+  
+  @media (min-width: 600px) { 
+    .calculator-container {
+        width: 40vw;
+        height: 80vh;
+    }
+  }
+    /* styling for the calculator number button */
+  .calculator-number {
+    @extend .button;
+  }
+
+  /* styling for the calculator operation button */
+  .calculator-operation {
+    @extend .button;
+  }
+  
+  /* styling for the calculator clear button */
+  .calculator-clear {
+    @extend .button;
+    background-color: #e68b1c;
+  }
+  
+  /* styling for the calculator equals button */
+  .calculator-equals {
+    @extend .button;
+    background-color: #e70f0f;
+  }
 </style>
 
 <div>
