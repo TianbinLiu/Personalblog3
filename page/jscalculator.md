@@ -107,6 +107,7 @@ title: JS Calculator
       <div class="calculator-operation button">*</div>
       <!--row 4-->
       <div class="calculator-operation button">SQRT</div>
+      <div class="calculator-operation button">/</div>
       <!--row 5-->
       <div class="calculator-clear button">A/C</div>
       <div class="calculator-number button">0</div>
