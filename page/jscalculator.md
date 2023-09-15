@@ -166,11 +166,14 @@ operations.forEach(button => {
 
 // Operator action
 function operation (choice) { // function to input operations into the calculator
-    if (firstNumber == null) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
-        firstNumber = parseInt(output.innerHTML);
+    if ((firstNumber == null) && (choice != "SQRT")) { // once the operation is chosen, the displayed number is stored into the variable firstNumber
+        firstNumber = parseFloat(output.innerHTML);
         nextReady = true;
         operator = choice;
         return; // exits function
+    }
+    if(choice == "SQRT"){
+      output.innerHTML = "0";
     }
     // occurs if there is already a number stored in the calculator
     firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
