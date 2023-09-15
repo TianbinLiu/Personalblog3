@@ -128,6 +128,9 @@ const operations = document.querySelectorAll(".calculator-operation");
 const clear = document.querySelectorAll(".calculator-clear");
 const equals = document.querySelectorAll(".calculator-equals");
 
+//Right justify result
+output.style.textAlign = "right";
+
 // Number buttons listener
 numbers.forEach(button => {
   button.addEventListener("click", function() {
