@@ -174,7 +174,7 @@ function operation (choice) { // function to input operations into the calculato
         return; // exits function
     }
     if(choice == "SQRT"){
-      output.innerHTML = "0";
+      firstNumber = "0";
     }
     // occurs if there is already a number stored in the calculator
     firstNumber = calculate(firstNumber, parseFloat(output.innerHTML)); 
