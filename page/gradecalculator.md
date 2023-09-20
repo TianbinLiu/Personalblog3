@@ -15,9 +15,9 @@ title: Grade Calculator
 </li>
 </ul>
 <!-- Rows added using scores ID -->
-<div id="scores">
+<table id="scores">
     <!-- javascript generated inputs -->
-</div>
+</table>
 
 <script>
 // Executes on input event and calculates totals
@@ -28,11 +28,21 @@ function calculator(event) {
         event.preventDefault(); // Prevent default behavior (tabbing to the next element)
    
         var array = document.getElementsByName('score'); // setup array of scores
+        var array2 = document.getElementsByName('score2');
         var total = 0;  // running total
         var count = 0;  // count of input elements with valid values
 
         for (var i = 0; i < array.length; i++) {  // iterate through array
             var value = array[i].value;
+            if (parseFloat(value)) {
+                var parsedValue = parseFloat(value);
+                total += parsedValue;  // add to running total
+                count++;
+            }
+        }
+
+        for (var i = 0; i < array2.length; i++) {  // iterate through array
+            var value = array2[i].value;
             if (parseFloat(value)) {
                 var parsedValue = parseFloat(value);
                 total += parsedValue;  // add to running total
@@ -51,7 +61,7 @@ function calculator(event) {
         }
 
         // adds newInputLine, only if all array values satisfy parseFloat 
-        if (count === document.getElementsByName('score').length) {
+        if (count === (document.getElementsByName('score').length + document.getElementsByName('score').length)) {
             newInputLine(count); // make a new input line
         }
     }
@@ -59,11 +69,15 @@ function calculator(event) {
 
 // Creates a new input box
 function newInputLine(index) {
+    var tablerow = document.createElement('tr');
+    document.getElementById("scores").appendChild(tablerow); // add to HTML
 
     // Add a label for each score element
     var title = document.createElement('label');
     title.htmlFor = index;
-    title.innerHTML = index + ". ";    
+    title.innerHTML = "Scores: " + index + ". ";   
+    var tablecol = document.createElement('td');
+    document.getElementById("scores").appendChild(tablecol);
     document.getElementById("scores").appendChild(title); // add to HTML
 
     // Setup score element and attributes
@@ -74,7 +88,18 @@ function newInputLine(index) {
     score.name = "score";  // name is used to group all "score" elements (array)
     score.style.textAlign = "right";
     score.style.width = "5em";
+    document.getElementById("scores").appendChild(tablecol);
     document.getElementById("scores").appendChild(score);  // add to HTML
+
+    var score2 = document.createElement("input"); // input element
+    score2.id =  index;  // id of input element
+    score2.onkeydown = calculator // Each key triggers event (using function as a value)
+    score2.type = "number"; // Use text type to allow typing multiple characters
+    score2.name = "score2";  // name is used to group all "score" elements (array)
+    score2.style.textAlign = "right";
+    score2.style.width = "5em";
+    document.getElementById("scores").appendChild(tablecol);
+    document.getElementById("scores").appendChild(score2);  // add to HTML
 
     // Create and add blank line after input box
     var br = document.createElement("br");  // line break element
@@ -86,5 +111,4 @@ function newInputLine(index) {
 
 // Creates 1st input box on Window load
 newInputLine(0);
-
 </script>
