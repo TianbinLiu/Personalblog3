@@ -55,4 +55,13 @@ title: Student Blog
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/4">Pair showcase + Review Ticket</a></td>
    </tr>
 
+   <tr>
+    <td>5</td>
+    <td>None</td>
+    <td>
+    <a href="https://tianbinliu.github.io/Personalblog3/2023/09/21/Sprite_IPYNB_2_.html">Sprite Work</a>
+    </td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/5">JS Sprite Animation Review Ticket</a></td>
+   </tr>
+
 </table>
