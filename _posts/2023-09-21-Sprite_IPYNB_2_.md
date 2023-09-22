@@ -71,7 +71,7 @@ type: hacks
 
 dog.frameY = 1;
 let currentdir = "null";
-let pastdir = "null"
+let pastdir = "null";
 let bark = false;
 
 addEventListener("keydown", function (event) {
@@ -83,7 +83,7 @@ addEventListener("keydown", function (event) {
             currentdir = "right";
             pastdir = "right";
             dog.frameY = 5;
-            dog.x + 1;
+            dog.x += 5;
           }
     }
 
@@ -94,7 +94,7 @@ addEventListener("keydown", function (event) {
         currentdir = "left";
         pastdir="left";
         dog.frameY = 2;
-        dog.x - 1;
+        dog.x -= 5;
         }
     }
 
@@ -111,7 +111,8 @@ addEventListener("keydown", function (event) {
                 dog.frameY = 2;
             }
         }
-        dog.y-1;
+        dog.y+=5;
+        console.log(dog.y);
         }
 
     }
@@ -127,7 +128,8 @@ addEventListener("keydown", function (event) {
                 dog.frameY = 2;
             }
         }
-        dog.y+1;
+        dog.y-=5;
+        console.log(dog.y);
         }
     }
     if(event.code=='Space'){
