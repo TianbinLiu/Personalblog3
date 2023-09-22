@@ -13,14 +13,6 @@ type: hacks
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
             <img id="dogSprite" src="https://tianbinliu.github.io/Personalblog3/images/spritesheet/dogSprites.png">
         </canvas>
-        <div id="controls"> <!--basic radio buttons which can be used to check whether each individual animaiton works -->
-            <input type="radio" name="animation" id="idle" checked>
-            <label for="idle">Idle</label><br>
-            <input type="radio" name="animation" id="barking">
-            <label for="barking">Barking</label><br>
-            <input type="radio" name="animation" id="walking">
-            <label for="walking">Walking</label><br>
-        </div>
     </div>
 </body>
 
@@ -32,10 +24,9 @@ type: hacks
         const SPRITE_HEIGHT = 144;
         const SCALE_FACTOR = 2;
         const FRAME_LIMIT = 48;
-        const FRAME_RATE = 15;
-
-        canvas.width = SPRITE_WIDTH * SCALE_FACTOR;
-        canvas.height = SPRITE_HEIGHT * SCALE_FACTOR;
+        
+        canvas.width = window.innerWidth/2;
+        canvas.height = window.innerHeight/2;
 
         class Dog {
             constructor() {
@@ -78,26 +69,143 @@ type: hacks
 
         const dog = new Dog();
 
-        // Add event listener to the parent container for event delegation
-        const controls = document.getElementById('controls');
-        controls.addEventListener('click', function (event) {
-            if (event.target.tagName === 'INPUT') {
-                const selectedAnimation = event.target.id;
-                switch (selectedAnimation) {
-                    case 'idle':
-                        dog.frameY = 0;
-                        break;
-                    case 'barking':
-                        dog.frameY = 1;
-                        break;
-                    case 'walking':
-                        dog.frameY = 2;
-                        break;
-                    default:
-                        break;
-                }
+dog.frameY = 1;
+let currentdir = "null";
+let pastdir = "null"
+let bark = false;
+
+addEventListener("keydown", function (event) {
+    console.log(event.code)
+    if (event.code == 'ArrowRight') {
+
+    if(!bark){
+          if(currentdir == "null" || currentdir=="right"){
+            currentdir = "right";
+            pastdir = "right";
+            dog.frameY = 5;
+            dog.x + 1;
+          }
+    }
+
+    }
+    if (event.code == 'ArrowLeft') {
+    if(!bark){
+        if(currentdir == "null" || currentdir=="left"){
+        currentdir = "left";
+        pastdir="left";
+        dog.frameY = 2;
+        dog.x - 1;
+        }
+    }
+
+    }
+    if (event.code == 'ArrowDown') {
+        if(!bark){
+        if(pastdir=="right"){
+            if(currentdir=="null"){
+                dog.frameY = 5;
             }
-        });
+        }
+        else if(pastdir=="left"){
+            if(currentdir=="null"){
+                dog.frameY = 2;
+            }
+        }
+        dog.y-1;
+        }
+
+    }
+    if (event.code == 'ArrowUp') {
+        if(!bark){
+        if(pastdir=="right"){
+            if(currentdir=="null"){
+                dog.frameY = 5;
+            }
+        }
+        else if(pastdir=="left"){
+            if(currentdir=="null"){
+                dog.frameY = 2;
+            }
+        }
+        dog.y+1;
+        }
+    }
+    if(event.code=='Space'){
+        bark=true;
+        if(dog.frameY==3 || dog.frameY==5){
+            dog.frameY = 4;
+        }
+        else if(dog.frameY==0 || dog.frameY==2){
+            dog.frameY = 1;
+        }
+    };
+})
+
+addEventListener("keyup", function (event) {
+    if (event.code == 'ArrowRight') {
+        if(!bark){
+        if(currentdir=="right"){
+            currentdir="null";
+            dog.frameY=3;
+        }
+        }
+
+    };
+    if (event.code == 'ArrowLeft') {
+        if(!bark){
+            if(currentdir=="left"){
+            currentdir="null";
+            dog.frameY=0;
+        }  
+        }
+
+    };
+    if (event.code == 'ArrowDown') {
+        if(!bark){
+        if(currentdir=="null"){
+        if(dog.frameY==5){
+            dog.frameY=3;
+        }
+        else if(dog.frameY=2){
+            dog.frameY=0;
+        }
+        }
+        }
+
+
+    };
+    if (event.code == 'ArrowUp') {
+        if(!bark){
+        if(currentdir=="null"){
+        if(dog.frameY==5){
+            dog.frameY=3;
+        }
+        else if(dog.frameY=2){
+            dog.frameY=0;
+        }
+        } 
+        }
+    }
+    if(event.code=='Space'){
+        bark=false;
+        if(dog.frameY == 4){
+            dog.frameY = 3;
+        }
+        else if(dog.frameY == 1){
+            dog.frameY = 0;
+        }
+    };
+})
+addEventListener("click", function (event) {
+    // This code will be executed when a mouse click occurs
+    // You can access event properties like event.clientX and event.clientY
+    // to get the mouse's X and Y coordinates
+    // Example:
+    console.log("Mouse click at X: " + event.clientX + ", Y: " + event.clientY);
+
+    // You can add your mouse click logic here
+});
+
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
