@@ -112,7 +112,6 @@ addEventListener("keydown", function (event) {
             }
         }
         dog.y+=5;
-        console.log(dog.y);
         }
 
     }
@@ -129,7 +128,6 @@ addEventListener("keydown", function (event) {
             }
         }
         dog.y-=5;
-        console.log(dog.y);
         }
     }
     if(event.code=='Space'){
@@ -199,13 +197,25 @@ addEventListener("keyup", function (event) {
     };
 })
 addEventListener("click", function (event) {
-    // This code will be executed when a mouse click occurs
-    // You can access event properties like event.clientX and event.clientY
-    // to get the mouse's X and Y coordinates
-    // Example:
-    console.log("Mouse click at X: " + event.clientX + ", Y: " + event.clientY);
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
 
-    // You can add your mouse click logic here
+    console.log("Mouse click at X: " + mouseX + ", Y: " + mouseY);
+    if (dog.x !== mouseX) {
+        if (dog.x < mouseX) {
+            dog.x += 1;
+        } else {
+            dog.x -= 1;
+        }
+    }
+
+    if (dog.y !== mouseY) {
+        if (dog.y < mouseY) {
+            dog.y += slope;
+        } else {
+            dog.y -= slope;
+        }
+    }
 });
 
 
