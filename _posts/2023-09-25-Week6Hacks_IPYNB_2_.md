@@ -220,10 +220,10 @@ let evens = [];
 let i = 0;
 
 while (i < 10) {
-  if(i%2){
+  if(i%2 === 1){
     evens.push(i);
-    i += 2;
   }
+  i += 2;
 }
 
 console.log(evens);
