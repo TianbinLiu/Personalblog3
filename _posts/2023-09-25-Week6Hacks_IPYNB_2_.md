@@ -215,7 +215,7 @@ for (var i = 1; i < alphabetList.length; i++) {
 
 ```python
 %%js
-
+//Intended behavior: print a list of all the odd numbers below 10
 let evens = [];
 let i = 0;
 
@@ -223,7 +223,7 @@ while (i < 10) {
   if(i%2 === 1){
     evens.push(i);
   }
-  i += 2;
+  i++;
 }
 
 console.log(evens);
