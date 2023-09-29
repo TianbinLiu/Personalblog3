@@ -1,6 +1,6 @@
 ---
 toc: True
-comments: False
+comments: True
 layout: post
 title: Week 6 Web Programming Basics, HTML, Data Type, DOM, Javascript, JS Debugging Hacks
 type: hacks
