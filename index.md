@@ -73,4 +73,13 @@ title: Student Blog
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/6">Web Programming Basics Review Ticket</a></td>
    </tr>
 
+   <tr>
+    <td>?</td>
+    <td>None</td>
+    <td>
+    <a href="https://tianbinliu.github.io/Personalblog3/2023/11/06/FinalWorkCheck_IPYNB_2_.html">Final Work Check</a>
+    </td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/7">Final individual review ticket</a></td>
+   </tr>
+
 </table>
