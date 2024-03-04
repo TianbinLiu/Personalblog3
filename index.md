@@ -5,7 +5,7 @@ title: Student Blog
 
 <table>
    <tr>
-    <th>Week</th>
+    <th>(Tri1)Week</th>
     <th>Plan</th>
     <th><a href="https://tianbinliu.github.io/Personalblog3/blogs">Hacks</a></th>
     <th><a href="https://github.com/TianbinLiu/Personalblog3/issues">Review Ticket</a></th>
@@ -82,4 +82,20 @@ title: Student Blog
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/7">Final individual review ticket</a></td>
    </tr>
 
+</table>
+
+<table>
+   <tr>
+    <th>(Tri2)Week</th>
+    <th>Plan</th>
+    <th><a href="https://tianbinliu.github.io/Personalblog3/blogs">Hacks</a></th>
+    <th><a href="https://github.com/TianbinLiu/Personalblog3/issues">Review Ticket</a></th>
+   </tr>
+   
+   <tr>
+    <td>0</td>
+    <td>None</td>
+    <td>None</td>
+    <td><a href="https://nighthawkcoders.github.io/teacher//5.a/c4.1/2023/08/16/github_pages_setup_IPYNB_2_.html">Tool Setup Tutorial by Mr.N</a></td>
+   </tr>
 </table>
