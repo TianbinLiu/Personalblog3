@@ -93,7 +93,7 @@ title: Student Blog
    </tr>
    
    <tr>
-    <td>0</td>
+    <td>13</td>
     <td>None</td>
     <td>None</td>
     <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/8">Blog update</a></td>
