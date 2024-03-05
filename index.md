@@ -96,6 +96,6 @@ title: Student Blog
     <td>0</td>
     <td>None</td>
     <td>None</td>
-    <td><a href="https://nighthawkcoders.github.io/teacher//5.a/c4.1/2023/08/16/github_pages_setup_IPYNB_2_.html">Tool Setup Tutorial by Mr.N</a></td>
+    <td><a href="https://tianbinliu.github.io/CSSE-Tri1-FinalProject/">Tri 1 Final Project</a></td>
    </tr>
 </table>
