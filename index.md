@@ -96,6 +96,6 @@ title: Student Blog
     <td>0</td>
     <td>None</td>
     <td>None</td>
-    <td><a href="https://tianbinliu.github.io/CSSE-Tri1-FinalProject/">Tri 1 Final Project</a></td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/8">Blog update</a></td>
    </tr>
 </table>
