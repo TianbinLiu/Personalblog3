@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: base
 permalink: /Calculator
 title: Calculator
 ---
