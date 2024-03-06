@@ -28,14 +28,14 @@ title: Aboutme
     </tr>
     <tr>
         <td>Soccer</td>
-        <td>Know how to build a website with Flask</td>
+        <td>Knowing how to build a website with Flask</td>
     </tr>
     <tr>
         <td>Read fiction</td>
-        <td>know how to use tools like Github</td>
+        <td>knowing how to use different tools like Github or new tec like Openai</td>
     </tr>
     <tr>
         <td>Sleep</td>
-        <td>Know how to build RPG Game</td>
+        <td>Knowing how to build RPG Game and build backend using AWS</td>
     </tr>
 </table>
