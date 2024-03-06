@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+
+{%- include head.html -%}
+
+<body onload="checking();">
+
+  <div class="wrapper">
+    <header>
+      {%- include header.html -%}
+      {% include head-custom2.html %}
+      {% include live2d.html %}
+    </header>
+
+    <section>
+
+      {% include nav_frontend.html %}
+      <div id="video_wrapper">
+        <video autoplay loop id="background">
+          <source src="https://drive.google.com/uc?export=view&id=17ygkkkTDZb219cgsmglfod33qP8PGW58" type="video/mp4">
+        </video>
+
+        {{ content }}
+      </div>
+      <div id="AIhelper">
+        <div id="dialog"></div>
+        <input type="button" value="-" onclick="removeRow(this)" />
+      </div>
+      <div class="pio-container left">
+        <div class="pio-action" style="z-index: 99;"></div>
+        <canvas id="pio" width="400" height="500"></canvas>
+      </div>
+    </section>
+
+  </div>
+  <script src="{{ '/assets/js/videojava.js' | relative_url }}" type="text/javascript"></script>
+  <script src="{{ '/assets/js/pio.js' | relative_url }}" type="text/javascript"></script>
+  <script src="{{ '/assets/js/l2d.js' | relative_url }}" type="text/javascript"></script>
+  <script type="text/javascript">
+    let isAIhelperfirst = true;
+
+    if (isAIhelperfirst) {
+      $("#AIhelper").hide();
+      isAIhelperfirst = false;
+    };
+    var pio = new Paul_Pio({
+      "mode": "fixed",
+      "tips": true,
+      "hidden": true,
+      "content": {
+        "welcome": ["Welcome to my blog", " |･ω･`) "],
+      },
+      "model": [
+        //"https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-miku/assets/miku.model.json", //初音
+        //"https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-shizuku/assets/shizuku.model.json",// 萌娘
+        //"https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-chitose/assets/chitose.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-koharu/assets/koharu.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-haru/01/assets/haru01.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-wanko/assets/wanko.model.json",
+        //"https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-vert/vert_classic/vert_classic.model.json",
+        //"https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-nepgear_extra/nepgear_extra/nepgear_extra.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-haruto/assets/haruto.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-haru/02/assets/haru02.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-histoire/histoire/histoire.model.json",
+        "https://tianbinliu.github.io/Fastpage/live2d-widget-models/live2d-widget-model-blanc_normal/blanc_normal/blanc_normal.model.json",
+      ]
+    });
+  </script>
+
+</body>
+
+
+</html>
