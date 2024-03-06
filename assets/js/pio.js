@@ -5,15 +5,15 @@
 
 一个支持更换 Live2D 模型的 Typecho 插件。
 ---- */
-let isAIhelper = false;
+
+var aiHelperDiv = document.getElementById("AIhelper");
 const dialogElement = document.getElementById("dialog");
 const userInputElement = document.getElementById("user-input");
 const submitButton = document.getElementById("submit-btn");
 let userInputArray = [];
 
 function removeRow(input) {
-    $("#AIhelper").hide();
-    isAIhelper = false;
+    aiHelperDiv.style.display = "none";
 };
 
 var Paul_Pio = function (prop) {
@@ -226,13 +226,11 @@ var Paul_Pio = function (prop) {
             // ChatGPT对话框
             elements.info.onclick = function () {
                 // 打开对话框
-                if (!isAIhelper) {
-                    $("#AIhelper").show();
-                    isAIhelper = true;
+                if (aiHelperDiv.style.display === "none") {
+                    aiHelperDiv.style.display = "block";
                 }
-                else if (isAIhelper) {
-                    $("#AIhelper").hide();
-                    isAIhelper = false;
+                else {
+                    aiHelperDiv.style.display = "none";
                 }
 
             };
