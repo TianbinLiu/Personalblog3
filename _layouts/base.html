@@ -14,7 +14,7 @@
         {% include nav_frontend.html %}
         <div id="video_wrapper">
           <video autoplay loop id="background">
-            <source src="https://drive.google.com/uc?export=view&id=17ygkkkTDZb219cgsmglfod33qP8PGW58" type="video/mp4">
+            <source src="{{ '/material/videobackground.mp4' | relative_url }}" type="video/mp4">
           </video>
           {{ content }}
         </div>
