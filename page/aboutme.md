@@ -15,3 +15,27 @@ title: Aboutme
         </th>
     </tr>
 </table>
+
+<h2>My interest and skills</h2>
+<table>
+    <tr>
+        <th>Interest</th>
+        <th>Skills</th>
+    </tr>
+    <tr>
+        <td>Video game</td>
+        <td>Java, Javascript, CSS, Python</td>
+    </tr>
+    <tr>
+        <td>Soccer</td>
+        <td>Know how to build a website with Flask</td>
+    </tr>
+    <tr>
+        <td>Read fiction</td>
+        <td>know how to use tools like Github</td>
+    </tr>
+    <tr>
+        <td>Sleep</td>
+        <td>Know how to build RPG Game</td>
+    </tr>
+</table>
