@@ -39,3 +39,42 @@ title: Aboutme
         <td>Knowing how to build RPG Game and build backend using AWS</td>
     </tr>
 </table>
+
+<h2>My senior classes</h2>
+<table>
+    <tr>
+        <th>Tri 1</th>
+        <th>Tri 2</th>
+        <th>Tri 3</th>
+    </tr>
+    <tr>
+        <td>World Literature 1</td>
+        <td>Chemistry</td>
+        <td>World Literature 2</td>
+    </tr>
+    <tr>
+        <td>3D Animation 2</td>
+        <td>Racket sports</td>
+        <td>Chemistry</td>
+    </tr>
+    <tr>
+        <td>Online Civics</td>
+        <td>Online Economic</td>
+        <td>None</td>
+    </tr>
+    <tr>
+        <td>Computer Science and Software Engineer</td>
+        <td>Spanish 4</td>
+        <td>Computer Science and Software Engineer</td>
+    </tr>
+    <tr>
+        <td>AP Calc BC</td>
+        <td>AP Calc BC</td>
+        <td>AP Calc BC</td>
+    </tr>
+    <tr>
+        <td>AP Stats</td>
+        <td>AP Stats</td>
+        <td>AP Stats</td>
+    </tr>
+</table>
