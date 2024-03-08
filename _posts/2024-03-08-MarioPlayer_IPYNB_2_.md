@@ -68,6 +68,7 @@ comments: False
       this.pixels = {{pixels}}; //pixel offset of images in the sprite, set by liquid constant
       this.interval = 100; //animation time interval
       this.obj = meta_data;
+      this.direction = "right";
       this.marioElement.style.position = "absolute";
     }
 
@@ -93,12 +94,23 @@ comments: False
 
     startWalking() {
       this.stopAnimate();
-      this.animate(this.obj["Walk"], 3);
+      if (this.direction == "right"){
+        this.animate(this.obj["Walk"], 3);
+      }
+      else if (this.direction == "left"){
+        this.animate(this.obj["WalkL"], 3);
+      }
+
     }
 
     startRunning() {
       this.stopAnimate();
+      if (this.direction == "right"){
       this.animate(this.obj["Run1"], 6);
+      }
+      else if (this.direction == "left"){
+        this.animate(this.obj["Run1L"], 3);
+      }
     }
 
     startPuffing() {
@@ -108,7 +120,12 @@ comments: False
 
     startCheering() {
       this.stopAnimate();
+      if (this.direction == "right"){
       this.animate(this.obj["Cheer"], 0);
+      }
+      else if (this.direction == "left"){
+        this.animate(this.obj["CheerL"], 3);
+      }
     }
 
     startFlipping() {
@@ -132,6 +149,7 @@ comments: False
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
+      mario.direction = "right";
       event.preventDefault();
       if (event.repeat) {
         mario.startCheering();
@@ -143,13 +161,19 @@ comments: False
         }
       }
     } else if (event.key === "ArrowLeft") {
+      mario.direction = "left";
       event.preventDefault();
       if (event.repeat) {
-        mario.stopAnimate();
+        mario.startCheering();
       } else {
-        mario.startPuffing();
+        if (mario.currentSpeed === 0) {
+          mario.startWalking();
+        } else if (mario.currentSpeed === 3) {
+          mario.startRunning();
+        }
       }
     }
+    
   });
 
   //touch events that enable animations
@@ -188,12 +212,3 @@ comments: False
   });
 
 </script>
-Investing in Your Technical Future
-
-Explore the Computer Science Pathway at Del Norte High School. All Del Norte CompSci classes are designed to provide a real-world development experience. Grading is focused on time invested, analytics, participation with peers, and engagement in learning.
-
-- Project-based learning with teacher support
-- Tech Talks by teacher complimented with Student Teaching
-- Course learning includes Coding Languages, DevOps, GitHub, Research and Creativity
-- Student teams practice Agile Development Methodologies: planning, communication, collaboration
-- Class lab time provided and approximately 2-3 hours of homework per week
