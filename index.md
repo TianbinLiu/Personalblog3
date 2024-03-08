@@ -96,6 +96,6 @@ title: Student Blog
     <td>13</td>
     <td>None</td>
     <td>None</td>
-    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/8">Blog update</a></td>
+    <td><a href="https://github.com/TianbinLiu/Personalblog3/issues/8">Blog update + Debugging + Player changes/assessment</a></td>
    </tr>
 </table>
