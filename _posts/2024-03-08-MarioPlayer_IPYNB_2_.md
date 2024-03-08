@@ -98,7 +98,7 @@ comments: False
         this.animate(this.obj["Walk"], 3);
       }
       else if (this.direction == "left"){
-        this.animate(this.obj["WalkL"], 3);
+        this.animate(this.obj["WalkL"], -3);
       }
 
     }
@@ -109,7 +109,7 @@ comments: False
       this.animate(this.obj["Run1"], 6);
       }
       else if (this.direction == "left"){
-        this.animate(this.obj["Run1L"], 3);
+        this.animate(this.obj["Run1L"], -6);
       }
     }
 
@@ -124,7 +124,7 @@ comments: False
       this.animate(this.obj["Cheer"], 0);
       }
       else if (this.direction == "left"){
-        this.animate(this.obj["CheerL"], 3);
+        this.animate(this.obj["CheerL"], 0);
       }
     }
 
@@ -168,7 +168,7 @@ comments: False
       } else {
         if (mario.currentSpeed === 0) {
           mario.startWalking();
-        } else if (mario.currentSpeed === 3) {
+        } else if (mario.currentSpeed === -3) {
           mario.startRunning();
         }
       }
