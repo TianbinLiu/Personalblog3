@@ -16,6 +16,7 @@ header_pages:
   - page/calculator.md
   - page/gradecalculator.md
   - page/jscalculator.md
+  - page/game2.html
 
 minima:
   # Minima skin selection.
