@@ -81,7 +81,7 @@ var Paul_Pio = function (prop) {
         info: modules.create("span", { class: "pio-info" }),
         sentence: modules.create("span", { class: "pio-sentence" }),
         //close: modules.create("span", {class: "pio-close"}),
-
+        close: modules.create("span", { class: "pio-close" }),
         show: modules.create("div", { class: "pio-show" })
     };
 
@@ -238,23 +238,6 @@ var Paul_Pio = function (prop) {
                 modules.render("Am I talking too fast? Click here to see our chatting records");
             };
             current.menu.appendChild(elements.info);
-
-            // 一言
-            elements.sentence.onclick = function () {
-                modules.render(fetch('https://v1.hitokoto.cn')
-                    .then(response => response.json())
-                    .then(data => {
-                        const hitokoto = document.querySelector('.pio-dialog')
-                        hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-                        hitokoto.innerText = data.hitokoto
-                    })
-                    .catch(console.error))
-            };
-            elements.sentence.onmouseover = function () {
-                modules.render("I heard a lot of life lessons from a Chinese friend. | ᐕ)⁾⁾");
-            };
-            current.menu.appendChild(elements.sentence);
-
 
             // 关闭看板娘
             elements.close.onclick = function () {
