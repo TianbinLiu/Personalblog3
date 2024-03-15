@@ -195,6 +195,7 @@ const GameSetup = {
         mountains: { src: "/images/platformer/backgrounds/mountains.jpg" },
         clouds : { src: "/images/platformer/backgrounds/clouds.png"},
         space: { src: "/images/platformer/backgrounds/planet.jpg" },
+        level4: { src: "/images/platformer/backgrounds/planet.jpg" },
         castles: { src: "/images/platformer/backgrounds/castles.png" },
         loading: { src: "/images/platformer/backgrounds/greenscreen.png" },
         complete: { src: "/images/platformer/backgrounds/OneStar.png" },
@@ -221,9 +222,9 @@ const GameSetup = {
           height: 40,
           scaleSize: 80,
           speedRatio: 0.7,
-          w: { row: 9, frames: 15 },
-          wa: { row: 9, frames: 15 },
-          wd: { row: 9, frames: 15 },
+          w: { row: 9, frames: 15 }, //walk left
+          wa: { row: 9, frames: 15 }, //walk left(air)
+          wd: { row: 9, frames: 15 },  //walk right(air)
           a: { row: 1, frames: 15, idleFrame: { column: 7, frames: 0 } },
           s: { row: 12, frames: 15 },
           d: { row: 0, frames: 15, idleFrame: { column: 7, frames: 0 } }
@@ -234,16 +235,33 @@ const GameSetup = {
           height: 52.5,
           scaleSize: 60,
           speedRatio: 0.7,
-          w: {row: 1, frames: 3},
-          wa: {row: 1, frames: 3},
-          wd: {row: 2, frames: 3},
+          w: {row: 1, frames: 3}, //walk left
+          wa: {row: 1, frames: 3}, //walk left
+          wd: {row: 2, frames: 3}, //walk left
           idle: { row: 6, frames: 1, idleFrame: {column: 1, frames: 0} },
           a: { row: 1, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Right Movement
           s: {row: 1, frames: 3}, // Stop the movement 
           d: { row: 2, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Left Movement 
           runningLeft: { row: 5, frames: 3, idleFrame: {column: 1, frames: 0} },
           runningRight: { row: 4, frames: 3, idleFrame: {column: 1, frames: 0} },
-        }
+        },
+        cuteBeing: {
+          src: "/images/platformer/sprites/cuteBeing.png", 
+          width: 24,
+          height: 24,
+          scaleSize: 60,
+          speedRatio: 0.7,
+          w: {row: 1, frames: 3},
+          wa: {row: 1, frames: 3},
+          wd: {row: 2, frames: 3},
+          idle: { row: 0, frames: 2, idleFrame: {column: 1, frames: 0} },
+          a: { row: 1, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Right Movement
+          s: {row: 1, frames: 3}, // Stop the movement 
+          d: { row: 2, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Left Movement 
+          runningLeft: { row: 5, frames: 3, idleFrame: {column: 1, frames: 0} },
+          runningRight: { row: 4, frames: 3, idleFrame: {column: 1, frames: 0} },
+        },
+
       },
       enemies: {
         goomba: {
@@ -416,6 +434,31 @@ const GameSetup = {
         ];
         // Space Game Level added to the GameEnv ...
         new GameLevel( {tag: "space", callback: this.playerOffScreenCallBack, objects: spaceGameObjects} );
+        
+        const level4GameObjects = [
+          // GameObject(s), the order is important to z-index...
+          { name: 'level4', id: 'background', class: Background, data: this.assets.backgrounds.level4 },
+          { name: 'grass', id: 'platform', class: Platform, data: this.assets.platforms.grass },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.2, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.2368, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.5, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.5368, yPercentage: 0.85 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.4, yPercentage: 1 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.4, yPercentage: 0.9 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.4, yPercentage: 0.8 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.4, yPercentage: 0.7 },
+          { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.alien, xPercentage: 0.4, yPercentage: 0.6 },
+          { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage: 0.3, minPosition: 0.05},
+          { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.5, minPosition: 0.3 },
+          { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.75, minPosition: 0.5 }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
+          { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.5, minPosition:  0.05},
+          { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.9, minPosition: 0.5},
+          { name: 'monkey', id: 'player', class: Player, data: this.assets.players.monkey },
+          { name: 'tree', id: 'tree', class: Tree, data: this.assets.obstacles.tree },
+          { name: 'complete', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete },
+        ];
+        // Level 4 added to the GameEnv ...
+        new GameLevel( {tag: "level4", callback: this.playerOffScreenCallBack, objects: level4GameObjects} );
 
         // Game Over Level definition...
         const endGameObjects = [
