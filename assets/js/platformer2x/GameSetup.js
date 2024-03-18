@@ -9,6 +9,7 @@ import BackgroundTransitions from './BackgroundTransitions.js';
 import BackgroundClouds from './BackgroundClouds.js';
 import Platform from './Platform.js';
 import JumpPlatform from './JumpPlatform.js';
+import oneDPlayer from './oneDPlayer.js';
 import Player from './Player.js';
 import Tube from './Tube.js';
 import Tree from './Tree.js';
@@ -251,15 +252,13 @@ const GameSetup = {
           height: 24,
           scaleSize: 60,
           speedRatio: 0.7,
-          w: {row: 1, frames: 3},
-          wa: {row: 1, frames: 3},
-          wd: {row: 2, frames: 3},
+          w: {row: 3, frames: 8},
+          wa: {row: 3, frames: 8},
+          wd: {row: 3, frames: 8},
           idle: { row: 0, frames: 2, idleFrame: {column: 1, frames: 0} },
-          a: { row: 1, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Right Movement
-          s: {row: 1, frames: 3}, // Stop the movement 
-          d: { row: 2, frames: 3, idleFrame: { column: 1, frames: 0 } }, // Left Movement 
-          runningLeft: { row: 5, frames: 3, idleFrame: {column: 1, frames: 0} },
-          runningRight: { row: 4, frames: 3, idleFrame: {column: 1, frames: 0} },
+          a: { row: 1, frames: 4, idleFrame: { column: 1, frames: 0 } }, // Right Movement
+          s: {row: 1, frames: 4}, // Stop the movement 
+          d: { row: 1, frames: 4, idleFrame: { column: 1, frames: 0 } }, // Left Movement 
         },
 
       },
@@ -453,7 +452,7 @@ const GameSetup = {
           { name: 'goombaSpecial', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage:  0.75, minPosition: 0.5 }, //this special name is used for random event 2 to make sure that only one of the Goombas ends the random event
           { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.5, minPosition:  0.05},
           { name: 'flyingGoomba', id: 'flyingGoomba', class: FlyingGoomba, data: this.assets.enemies.flyingGoomba, xPercentage:  0.9, minPosition: 0.5},
-          { name: 'monkey', id: 'player', class: Player, data: this.assets.players.monkey },
+          { name: 'cuteBeing', id: 'player', class: oneDPlayer, data: this.assets.players.cuteBeing },
           { name: 'tree', id: 'tree', class: Tree, data: this.assets.obstacles.tree },
           { name: 'complete', id: 'background', class: BackgroundTransitions,  data: this.assets.backgrounds.complete },
         ];
