@@ -4,6 +4,7 @@ import GameControl from './GameControl.js';
 import playJump from './Audio1.js';
 import playPlayerDeath from './Audio2.js';
 import Socket from './Multiplayer.js';
+import Player from './Player.js';
 
 /**
  * @class oneDPlayer class
