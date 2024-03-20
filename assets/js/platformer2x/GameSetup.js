@@ -10,6 +10,7 @@ import BackgroundClouds from './BackgroundClouds.js';
 import Platform from './Platform.js';
 import JumpPlatform from './JumpPlatform.js';
 import Player from './Player.js';
+import BasePlayer from './BasePlayer.js';
 import oneDPlayer from './oneDPlayer.js';
 import Tube from './Tube.js';
 import Tree from './Tree.js';

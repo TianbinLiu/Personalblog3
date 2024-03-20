@@ -5,6 +5,7 @@ import playJump from './Audio1.js';
 import playPlayerDeath from './Audio2.js';
 import Socket from './Multiplayer.js';
 import Player from './Player.js';
+import BasePlayer from './BasePlayer.js';
 
 /**
  * @class oneDPlayer class
@@ -16,7 +17,7 @@ import Player from './Player.js';
  * 
  * @extends Player
  */
-export class oneDPlayer extends Player {
+export class oneDPlayer extends BasePlayer {
     // instantiation: constructor sets up oneDPlayer object 
     constructor(canvas, image, data, widthPercentage = 0.3, heightPercentage = 0.8) {
         super(canvas, image, data, widthPercentage, heightPercentage);
